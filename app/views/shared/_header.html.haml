@@ -14,7 +14,7 @@
         %li.header__navContent
           = link_to "カテゴリー", '#'
           %ul.header__navMenuSecond
-            = render partial: "shared/navMenu_second", collection: @categories.where(ancestry: nil), as: "navMenu_second"
+            = render partial: "shared/navMenu_second", collection: @parent_categories, as: "parent_category"
 
         %li.header__navContent
           = link_to "ブランド", '#'
