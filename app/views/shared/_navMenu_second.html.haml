@@ -1,0 +1,4 @@
+%li.header__navContentSecond
+  = link_to "#{navMenu_second[:name]}", '#'
+  %ul.header__navMenuThird
+    = render partial: "shared/navMenu_third", collection: navMenu_second.children, as: "navMenu_third"
