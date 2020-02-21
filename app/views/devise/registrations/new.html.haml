@@ -1,53 +1,51 @@
 .main
   = render 'shared/sub_header'
   .main__single-container
-    %h2.main__head-registration 会員情報登録
-    = form_with local: true, class: "main__registar-form" do |f|
-      .main__single-content
-        .main__form-group
-          %label.main__nickname ニックネーム
-          %span.main__form-require 必須
-          = f.text_field :nickname, placeholder: "ニックネーム", class: "main__nickname-field" 
+    %h2.main__single-container__head 会員情報登録
+    = form_for(@user, url: user_registration_path, html: { class: "registar-form"}) do |f|
+      = devise_error_messages!
+      .registar-form__content
+        .registar-form__content__box
+          %label.registar-form__content__box__label ニックネーム
+          %span.registar-form__content__box__require 必須
+          = f.text_field :nickname, placeholder: "ニックネーム", class: "registar-form__content__box--one-field" 
 
-        .main__form-group
-          %label.main__email メールアドレス
-          %span.main__form-require 必須
-          = f.email_field :email, placeholder: "PC携帯どちらでも可",class: "main__email-field"
+        .registar-form__content__box
+          %label.registar-form__content__box__label メールアドレス
+          %span.registar-form__content__box__require 必須
+          = f.email_field :email, placeholder: "PC携帯どちらでも可",class: "registar-form__content__box--one-field"
         
-        .main__form-group
-          %label.main__password パスワード
-          %span.main__form-require 必須
-          = f.password_field :password, placeholder: "７文字以上の半角英数字", class: "main__password-field"
-          %p.text2 ※英字と数字の両方を含めて設定してください
+        .registar-form__content__box
+          %label.registar-form__content__box__label パスワード
+          %span.registar-form__content__box__require 必須
+          = f.password_field :password, placeholder: "７文字以上の半角英数字", class: "registar-form__content__box--one-field"
+          %p.registar-form__content__box--text2 ※英字と数字の両方を含めて設定してください
+        .registar-form__content__box
+          %label.registar-form__content__box__label パスワード（確認）
+          %span.registar-form__content__box__require 必須
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: "確認のため、もう一度入力してください", class: "registar-form__content__box--one-field"
           
-        .main__form-group
-          %div
-            %label.main__name  お名前（全角）
-            %span.main__form-require 必須
-          = f.text_field :family_name_kanji, placeholder: "例）山田", class: "main__family-name-kanji"  
-          = f.text_field :first_name_kanji, placeholder: "例) 彩", class: "main__first-name-kanji"  
+        .registar-form__content__box
+          %label.registar-form__content__box__label  お名前（全角）
+          %span.registar-form__content__box__require 必須
+          .registar-form__content__box--two-field
+            = f.text_field :last_name, placeholder: "例）山田", class: "two-field-a"  
+            = f.text_field :first_name, placeholder: "例) 彩", class: "two-field-b"  
            
 
-        .main__form-group
-          %div
-            %label.main__name  お名前（全角）
-            %span.main__form-require 必須
-          = f.text_field :family_name_kana, placeholder: "例）ヤマダ", class: "main__family-name-kana"  
-          = f.text_field :first_name_kana, placeholder: "例) アヤ", class: "main__first-name-kana"  
+        .registar-form__content__box
+          %label.registar-form__content__box__label  フリガナ（全角）
+          %span.registar-form__content__box__require 必須
+          .registar-form__content__box--two-field
+            = f.text_field :last_furigana, placeholder: "例）ヤマダ", class: "two-field-a"  
+            = f.text_field :first_furigana, placeholder: "例) アヤ", class: "two-field-b"  
           
-        .main__form-group
-          %label.main__birthday 生年月日
-          %span.main__form-require 必須  
-              
-          .main__birthday-input
-            %select.main__number-input
-            %span.main__year 年
-            %select.main__number-input
-            %span.main__month 月
-            %select.main__number-input
-            %span.main__day 日
-            
+        .registar-form__content__box
+          %label.registar-form__content__box__label 生年月日
+          %span.registar-form__content__box__require 必須
+          .registar-form__content__box__birthday
+            != sprintf(f.date_select(:birthday,use_month_numbers:true, prompt:"--", start_year:Time.now.year, end_year:1920, date_separator:'%s'),'年','月')+'日'
       
-        .main__single-text
+        .registar-form__content__submit
           = f.submit "次へ進む", class: "single-move-button"  
   = render 'shared/sub_footer'

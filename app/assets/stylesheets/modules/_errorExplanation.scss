@@ -1,0 +1,25 @@
+#error_explanation {
+  color: $require-box;
+  padding: 10px;
+  margin-bottom: 20px;
+  h2 {
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #fdfaa4;
+    border-radius: 5px;
+  }
+  ul {
+    padding: 0 60px;
+    li {
+      padding-left: 4px;
+      font-size: 12px;
+    }
+  }
+}
+
+#flash_alert {
+  color: $require-box;
+  text-align: center;
+  padding: 20px 10px 0;
+}

@@ -3,18 +3,29 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
 
   has_many :items
   has_many :orders
   has_one :credit_card
   has_one :address
 
-  validates :nickname, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_furigana, presence: true
-  validates :last_furigana, presence: true
-  validates :birthday, presence: true
-  validates :email, presence: true, uniqueness: true
-
+  validates :nickname, :first_name, :last_name, :birthday, presence: true
+  validates :email, presence: true,
+            uniqueness: true,
+            format: {
+            with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+            message: "は正しく入力してください。"
+          }
+  validates :password,  presence: true,
+            length: { minimum: 7 },
+            format: {
+              with: /\A(?=.*?[a-z])(?=.*?\d)[a-zA-Z\d]+\z/,
+              message: "は英字と数字の両方を含めて下さい。"
+            }
+  validates :first_furigana, :last_furigana, presence: true,
+            format: {
+              with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+              message: "は全角カタカナのみで入力して下さい。"
+            }
 end

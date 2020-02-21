@@ -164,6 +164,13 @@
         visibility: visible;
         opacity: 1;
       }
+      .header-logout {
+        padding-left: 10px;
+        font-size: 14px;
+        &:hover {
+          opacity: .5;
+        }
+      }
     }
 
         &__userLink {

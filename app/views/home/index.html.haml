@@ -6,8 +6,8 @@
     = render "/shared/introductionSecond"
     = render "/shared/introductionThird"
     = render "/shared/introductionFourth"
-    = render partial: "/shared/pickUp", locals: {link: root_path, title: "ピックアップカテゴリー", subtitle: "新規投稿商品"}
-    = render partial: "/shared/pickUp", locals: {link: root_path, title: "ピックアップブランド", subtitle: "アーカイブ"}
+    = render partial: "/shared/pickUpcategory", locals: {link: root_path, title: "ピックアップカテゴリー", subtitle: "レディース新着アイテム"}
+    = render partial: "/shared/pickUpbrand", locals: {link: root_path, title: "ピックアップブランド", subtitle: "シャネル"}
     = link_to new_item_path , class: 'sell-icon' do
       = render 'shared/sell-icon'
 

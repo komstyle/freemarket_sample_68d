@@ -11,7 +11,6 @@
 
   &__subTitle {
     display: block;
-    width: 180px;
     margin: 0 auto;
     font-size: 28px;
     font-weight: bold;
@@ -23,46 +22,57 @@
   &__contentsList {
     width: 780px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    
+    &__product-list{
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
-      &__contentLink {
-        display: block;
-
-        &:hover {
-          opacity: .5;
-        }
+   
+      &__content {
+        max-width: 200px;
+        max-height: 245px;
       }
 
-        &__itemImage {
-          height: 150px;
-          width: 220px;
-          object-fit: cover;
-          vertical-align: bottom;
+        &__contentLink {
+          display: block;
+
+          &:hover {
+            opacity: .5;
+          }
         }
 
-        &__details {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 16px;
-          font-size: 16px;
-          line-height: 1.5;
-          background-color: $wh;
-        }
-
-            &__taxInfo {
-              font-size: 10px;
-              color: $sub-font;
-            }
-
-          &__favBox {
-            display: flex;
-            align-items: center;
+          &__itemImage {
+            height: 156px;
+            width: 220px;
+            object-fit: cover;
+            vertical-align: bottom;
           }
 
-            &__favNumber {
-              margin: 3px 0 0 4px;
+          &__details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: $wh;
+            width: 220px;
+            height: 120px;
+          }
+
+              &__taxInfo {
+                font-size: 10px;
+                color: $sub-font;
+              }
+
+            &__favBox {
+              display: flex;
+              align-items: center;
             }
+
+              &__favNumber {
+                margin: 3px 0 0 4px;
+              }
 }
