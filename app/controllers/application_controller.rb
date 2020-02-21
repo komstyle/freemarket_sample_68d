@@ -1,14 +1,9 @@
 class ApplicationController < ActionController::Base
   
-  before_action :set_categories, only: [:index, :new, :show, :edit]
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
 
   private
-
-  def set_categories
-    @categories = Category.all
-  end
 
   def production?
     Rails.env.production?
