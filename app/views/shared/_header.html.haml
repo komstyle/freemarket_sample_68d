@@ -26,14 +26,17 @@
               = link_to "ナイキ", '#'
           
     .header__userMenu
-      - user_signed_in = true #devise導入後削除
-      - if user_signed_in #devise導入後「?」追記
-        = link_to "ログイン", new_user_session_path, class: "header__userLink"
-        = link_to "新規会員登録", new_user_registration_path , class: "header__userLink"
-      - else
-        = link_to "マイページ", '#', class: "header__userContent"
+      - if user_signed_in?
+        = link_to "マイページ", users_path, class: "header__userContent"
         %ul.header__userMenuSecond
           %li.header__userContentSecond
             = link_to "出品した商品", '#'
           %li.header__userContentSecond
             = link_to "購入した商品", '#'
+        = link_to(destroy_user_session_path, method: :delete, class: "header-logout") do
+          = "ログアウト"
+      - else
+        = link_to "ログイン", new_user_session_path, class: "header__userLink"
+        = link_to "新規会員登録", new_user_registration_path , class: "header__userLink"
+
+

@@ -96,7 +96,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|null: false, index: true|
+|ancestry|string|index: true|
 
 ### Association
 - has_many :items

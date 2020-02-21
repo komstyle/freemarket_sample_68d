@@ -106,7 +106,7 @@
       %figure.picture
         = image_tag "/assets/mypage/mypage-user.jpg" , alt: "test"
       %h2.bold
-        ユーザー
+        = current_user.nickname
       .mp-container__mp-content__mypage-user-icon__mypage-number
         .mp-container__mp-content__mypage-user-icon__mypage-number__evaluation
           評価

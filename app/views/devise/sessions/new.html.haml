@@ -1,4 +1,3 @@
-
 .single-container
   = render 'shared/sub_header'
   .single-main
@@ -6,18 +5,15 @@
       .single-main__login-no-acount
         %p.single-main__notice アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", new_user_registration_path, class: "single-main__move"
-        
-      
+      - flash.each do |name, msg|
+        - if name != "notice"
+          = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       .single-main__login-form
-        = form_with do |f|
+        = form_for(@user, url: session_path(resource_name)) do |f|
           .single-main__form-inner  
-            %div
-              = f.email_field :email, placeholder: "メールアドレス", class: "single-main__email"
-            %div
-              = f.password_field :password, placeholder: "パスワード",class: "single-main__password"
-            %div
-              = f.submit "ログイン", class: "single-main__submit"
-            = link_to "#", class: 'password-forget' do
+            = f.email_field :email, placeholder: "メールアドレス", class: "single-main__email"
+            = f.password_field :password, placeholder: "パスワード",class: "single-main__password"
+            = f.submit "ログイン", class: "single-main__submit"
+            = link_to new_password_path(resource_name), class: 'password-forget' do
               パスワードをお忘れの方
-              
   = render 'shared/sub_footer'
